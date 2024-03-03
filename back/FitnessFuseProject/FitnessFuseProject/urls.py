@@ -15,8 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from FitnesFuseApp.views import (WeightViewSet, StepsViewSet, ClaoriseBurnedViewSet,
+                                 TrainingViewSet)
+
+router = routers.DefaultRouter()
+router.register(r'weight', WeightViewSet, basename='weight')
+router.register(r'steps', StepsViewSet, basename='steps')
+router.register(r'caloriesburned', ClaoriseBurnedViewSet, basename='caloriesburned')
+router.register(r'training', TrainingViewSet, basename='training')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+urlpatterns += router.urls
