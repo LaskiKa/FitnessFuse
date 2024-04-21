@@ -26,7 +26,6 @@ router.register(r'weight', WeightViewSet, basename='weight')
 router.register(r'steps', StepsViewSet, basename='steps')
 router.register(r'caloriesburned', ClaoriseBurnedViewSet, basename='caloriesburned')
 router.register(r'training', TrainingViewSet, basename='training')
-# router.register(r'users/<int:pk>', UserList, basename='users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +36,3 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
-# urlpatterns += router.urls

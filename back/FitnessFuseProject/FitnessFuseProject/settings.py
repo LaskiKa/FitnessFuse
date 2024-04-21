@@ -21,7 +21,10 @@ TEMP_DIR = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x!gpxad@rol@7tizxy7o4kc^@m^*8)mu(4cp$y7bg_rt89tggh'
+try:
+    from FitnessFuseProject.local_settings import SECRET_KEY
+except ModuleNotFoundError:
+    print("No secret key in local settings")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
