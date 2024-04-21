@@ -18,18 +18,23 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from FitnesFuseApp.views import (WeightViewSet, StepsViewSet, ClaoriseBurnedViewSet,
-                                 TrainingViewSet)
+                                 TrainingViewSet,
+                                 CreateUser, LoginUser, LogoutUser)
 
 router = routers.DefaultRouter()
 router.register(r'weight', WeightViewSet, basename='weight')
 router.register(r'steps', StepsViewSet, basename='steps')
 router.register(r'caloriesburned', ClaoriseBurnedViewSet, basename='caloriesburned')
 router.register(r'training', TrainingViewSet, basename='training')
+# router.register(r'users/<int:pk>', UserList, basename='users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('login/', LoginUser.as_view()),
+    path('logout/', LogoutUser.as_view()),
+    path('register/', CreateUser.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
-urlpatterns += router.urls
+# urlpatterns += router.urls
