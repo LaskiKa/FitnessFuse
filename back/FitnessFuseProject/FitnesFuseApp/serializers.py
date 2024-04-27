@@ -35,14 +35,14 @@ class WeightSerializer(serializers.ModelSerializer):
 class StepsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Steps
-        fields = ['user', 'steps',
+        fields = ['id', 'user', 'steps',
                   'measurement_date']
 
 
 class ClaoriseBurnedSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClaoriseBurned
-        fields = ['user', 'kcal',
+        fields = ['id', 'user', 'kcal',
                   'measurement_date']
 
 
