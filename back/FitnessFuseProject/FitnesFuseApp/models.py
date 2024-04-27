@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Weight(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    weight = models.SmallIntegerField(default=0)
+    weight = models.DecimalField(default=0, decimal_places=2, max_digits=5)
     measurement_date = models.DateTimeField()
     update = models.DateTimeField(auto_now_add=True)
 
